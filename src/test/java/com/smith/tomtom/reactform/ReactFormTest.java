@@ -53,11 +53,15 @@ public class ReactFormTest {
 			test = report.startTest("Correct password log in test " + testNumber + ".");
 			testNumber++;
 			LandingPage landing = PageFactory.initElements(driver, LandingPage.class);
+			FormPage form = PageFactory.initElements(driver, FormPage.class);
 
 			driver.get(Constant.START_URL);
 			test.log(LogStatus.INFO, "Navigating to react home page");
+			
+			landing.clickLink();
+			test.log(LogStatus.INFO, "Navigating to form page");
 
-			landing.fillForm(driver, Constant.emails[i], Constant.passwords[i], Constant.passwords[i],
+			form.fillForm(driver, Constant.emails[i], Constant.passwords[i], Constant.passwords[i],
 					Constant.countryIds[i]);
 			test.log(LogStatus.INFO, "Filling in form using email: " + Constant.emails[i] + ", password: "
 					+ Constant.passwords[i] + ".");
@@ -81,11 +85,15 @@ public class ReactFormTest {
 			test = report.startTest("Wrong password log in test " + testNumber + ".");
 			testNumber++;
 			LandingPage landing = PageFactory.initElements(driver, LandingPage.class);
+			FormPage form = PageFactory.initElements(driver, FormPage.class);
 
 			driver.get(Constant.START_URL);
 			test.log(LogStatus.INFO, "Navigating to react home page");
+			
+			landing.clickLink();
+			test.log(LogStatus.INFO, "Navigating to form page");
 
-			landing.fillForm(driver, Constant.emails[i], Constant.passwords[i], Constant.wrongPasswords[i],
+			form.fillForm(driver, Constant.emails[i], Constant.passwords[i], Constant.wrongPasswords[i],
 					Constant.countryIds[i]);
 			test.log(LogStatus.INFO, "Filling in form using email: " + Constant.emails[i] + ", password: "
 					+ Constant.passwords[i] + ", confirm password: " + Constant.wrongPasswords[i] + ".");
